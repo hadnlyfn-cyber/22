@@ -5,174 +5,293 @@
 <title>Story 22</title>
 
 <style>
-body {margin:0; font-family:Arial; background:black; overflow:hidden;}
-
-.screen{
- position:absolute; width:100%; height:100%;
- display:flex; flex-direction:column;
- justify-content:center; align-items:center;
- opacity:0; pointer-events:none;
- transition:0.8s;
-}
-.screen.active{opacity:1; pointer-events:all;}
-
-#intro{
- background:url("22.jpg") center/cover no-repeat; /* картинка на первом титуле */
- z-index:10; 
- position:relative;
- display: flex;
- justify-content: center;
- align-items: center;
- height: 100vh; /* высота экрана */
+body {
+  margin: 0;
+  font-family: Arial, sans-serif;
+  background: black;
+  overflow: hidden;
 }
 
-#menu, #question{background:black; color:white;}
-
-.neon-btn{
- padding:15px 25px;
- border-radius:25px;
- border:none;
- cursor:pointer;
- margin:10px;
- font-weight:bold;
- z-index:15; /* кнопки находятся на переднем плане */
+.screen {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  opacity: 0;
+  pointer-events: none;
+  transition: 0.8s;
 }
 
-.btn-white{background:white; color:black;}
-.btn-green{background:lightgreen; color:black;}
-.btn-red{background:#ff4d4d; color:white;}
-
-.row{display:flex; gap:20px;}
-
-.modal{
- position:absolute;
- top:50%; left:50%;
- transform:translate(-50%,-50%) scale(0.7);
- padding:30px;
- border-radius:20px;
- opacity:0;
- pointer-events:none;
- transition:0.4s;
- width:400px;
- text-align:center;
- z-index:20; /* увеличиваем z-index для модальных окон */
-}
-.modal.active{
- opacity:1;
- pointer-events:all;
- transform:translate(-50%,-50%) scale(1);
+.screen.active {
+  opacity: 1;
+  pointer-events: all;
 }
 
-.modal-green{
- background:linear-gradient(lightgreen, green);
- box-shadow:0 0 25px darkgreen;
- color:black;
+#intro {
+  background: url("22.jpg") center/cover no-repeat;
+  z-index: 10;
+  position: relative;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
 }
 
-.modal-red{
- background:linear-gradient(#ff6b6b, darkred);
- box-shadow:0 0 25px red;
- color:white;
+#menu, #question {
+  background: black;
+  color: white;
 }
 
-.modal-gray{
- background:#222;
- box-shadow:0 0 20px gray;
- color:white;
+.neon-btn {
+  padding: 15px 25px;
+  border-radius: 25px;
+  border: none;
+  cursor: pointer;
+  margin: 10px;
+  font-weight: bold;
+  z-index: 15;
+  transition: background 0.3s ease, transform 0.3s ease;
 }
 
-#finalScreen{
- position:absolute; width:100%; height:100%;
- display:flex; justify-content:center; align-items:center;
- color:white; font-size:24px;
- background:black;
- opacity:0; transition:1.5s;
- z-index:10;
- text-align:center;
+.btn-white {
+  background: linear-gradient(45deg, #ffffff, #cccccc);
+  color: black;
 }
-#finalScreen.active{opacity:1;}
+
+.btn-green {
+  background: linear-gradient(45deg, lightgreen, green);
+  color: black;
+}
+
+.btn-red {
+  background: linear-gradient(45deg, #ff6b6b, #ff4d4d);
+  color: white;
+}
+
+.neon-btn:hover {
+  transform: scale(1.05);
+}
+
+.row {
+  display: flex;
+  gap: 20px;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+
+/* Модалки */
+.modal {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%) scale(0.7);
+  padding: 30px;
+  border-radius: 20px;
+  opacity: 0;
+  pointer-events: none;
+  transition: 0.4s;
+  width: 400px;
+  text-align: center;
+  z-index: 20;
+}
+
+.modal.active {
+  opacity: 1;
+  pointer-events: all;
+  transform: translate(-50%, -50%) scale(1);
+}
+
+.modal-green {
+  background: linear-gradient(lightgreen, green);
+  box-shadow: 0 0 25px darkgreen;
+  color: black;
+}
+
+.modal-red {
+  background: linear-gradient(#ff6b6b, darkred);
+  box-shadow: 0 0 25px red;
+  color: white;
+}
+
+.modal-gray {
+  background: #222;
+  box-shadow: 0 0 20px gray;
+  color: white;
+}
+
+#finalScreen {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: white;
+  font-size: 24px;
+  background: black;
+  opacity: 0;
+  transition: 1.5s;
+  z-index: 10;
+  text-align: center;
+}
+
+#finalScreen.active {
+  opacity: 1;
+}
 
 .video-background {
- position: absolute;
- top: 0;
- left: 0;
- width: 100%;
- height: 100%;
- object-fit: cover;
- z-index: 5; /* Под остальными элементами */
- opacity: 0.6; /* Слегка затемним видео */
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  z-index: 5;
+  opacity: 0.6;
 }
 
 #finalScreen p {
- padding: 20px;
- border: 3px solid black; /* Черная обводка */
- font-size: 36px;
- z-index: 15;
+  padding: 20px;
+  border: 3px solid black;
+  font-size: 36px;
+  z-index: 15;
 }
 
 #finalScreen .help-number {
- font-size: 20px;
- color:white;
- margin-top: 20px;
+  font-size: 20px;
+  color: white;
+  margin-top: 20px;
 }
 
 #intro .start-container {
- display: flex;
- flex-direction: column;
- align-items: center;
- justify-content: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
 }
 
 #intro .start-container button {
- font-size: 25px;
- padding: 30px 50px;
- margin: 20px;
+  font-size: 25px;
+  padding: 30px 50px;
+  margin: 20px;
 }
 
 #intro .start-container p {
- color:white;
- font-size: 18px;
- text-align:center;
- margin-top: 20px;
+  color: white;
+  font-size: 18px;
+  text-align: center;
+  margin-top: 20px;
 }
 
 /* Кнопка на первом титуле */
 .start-btn {
- font-size: 30px;
- padding: 40px 60px;
- background-color: #fff;
- color: black;
- border-radius: 25px;
- border: none;
- cursor: pointer;
- box-shadow: 0 0 20px gray;
- transition: 0.3s;
+  font-size: 30px;
+  padding: 40px 60px;
+  background-color: #fff;
+  color: black;
+  border-radius: 25px;
+  border: none;
+  cursor: pointer;
+  box-shadow: 0 0 20px gray;
+  transition: 0.3s;
 }
 
 .start-btn:hover {
- box-shadow: 0 0 30px gray;
- transform: scale(1.1);
+  box-shadow: 0 0 30px gray;
+  transform: scale(1.1);
 }
 
 /* Блок с подсказкой */
 .start-message {
- padding: 20px;
- border: 3px solid red;
- color: white;
- font-size: 20px;
- text-align: center;
- margin-top: 20px;
- font-weight: bold;
- background-color: rgba(255, 0, 0, 0.2); /* Полупрозрачный красный фон */
- box-shadow: 0 0 15px red; /* Неоновое свечение */
- transition: 0.3s;
- border-radius: 10px;
+  padding: 20px;
+  border: 3px solid red;
+  color: white;
+  font-size: 20px;
+  text-align: center;
+  margin-top: 20px;
+  font-weight: bold;
+  background-color: rgba(255, 0, 0, 0.2);
+  box-shadow: 0 0 15px red;
+  transition: 0.3s;
+  border-radius: 10px;
 }
 
 /* Эффект неона */
 .start-message:hover {
- box-shadow: 0 0 30px red, 0 0 50px red;
- transform: scale(1.05);
+  box-shadow: 0 0 30px red, 0 0 50px red;
+  transform: scale(1.05);
+}
+
+/* Медиа-запросы для мобильных устройств */
+@media (max-width: 768px) {
+  #intro .start-container button {
+    font-size: 20px;
+    padding: 20px 40px;
+  }
+
+  #intro .start-container p {
+    font-size: 16px;
+    text-align: center;
+  }
+
+  .modal {
+    width: 90%;
+    padding: 20px;
+  }
+
+  #finalScreen p {
+    font-size: 28px;
+  }
+
+  .video-background {
+    opacity: 0.8;
+  }
+
+  .neon-btn {
+    font-size: 18px;
+    padding: 12px 20px;
+    margin: 8px;
+  }
+
+  .row {
+    flex-direction: column;
+    gap: 15px;
+  }
+
+  #menu h2 {
+    font-size: 20px;
+    text-align: center;
+    max-width: 100%;
+  }
+}
+
+@media (max-width: 480px) {
+  #intro .start-container button {
+    font-size: 18px;
+    padding: 15px 30px;
+  }
+
+  .neon-btn {
+    font-size: 16px;
+    padding: 10px 18px;
+    margin: 6px;
+  }
+
+  .modal {
+    width: 85%;
+    padding: 15px;
+  }
+
+  #finalScreen p {
+    font-size: 24px;
+  }
+
+  #menu h2 {
+    font-size: 18px;
+  }
 }
 </style>
 </head>
@@ -185,7 +304,7 @@ body {margin:0; font-family:Arial; background:black; overflow:hidden;}
 <div id="intro" class="screen active">
   <div class="start-container">
     <button class="start-btn" onclick="startSite()">Беременная учительница</button>
-    <p class="start-message">Нажми на кнопку выше, чтобы начать</p> <!-- Текст с красным блоком и неоновым эффектом -->
+    <p class="start-message">Нажми на кнопку выше, чтобы начать</p>
   </div>
 </div>
 
@@ -227,7 +346,7 @@ body {margin:0; font-family:Arial; background:black; overflow:hidden;}
 <div id="creator" class="modal modal-gray">
  <img src="ivan.jpg" width="200"><br><br>
  <button class="neon-btn btn-white" onclick="closeModal('creator')">Закрыть</button>
- <p style="color:white;">Будущий отец, сам ученик и создатель сайта — Лукьянов Иван</p> <!-- Добавлена подпись -->
+ <p style="color:white;">Будущий отец, сам ученик и создатель сайта — Лукьянов Иван</p>
 </div>
 
 <!-- СЛАЙД 3 -->
@@ -236,7 +355,7 @@ body {margin:0; font-family:Arial; background:black; overflow:hidden;}
    <source src="noob.mp4" type="video/mp4">
    Ваш браузер не поддерживает видео.
  </video>
- <h2 style="color:white;">У вас правда это случилось?</h2> <!-- Белый текст -->
+ <h2 style="color:white;">У вас правда это случилось?</h2>
  <div class="row">
    <button class="neon-btn btn-white" onclick="showVideo()">Нет</button>
    <button class="neon-btn btn-red" onclick="showHelp()">Да</button>
@@ -261,7 +380,7 @@ body {margin:0; font-family:Arial; background:black; overflow:hidden;}
    <source src="vid.mp4" type="video/mp4">
    Ваш браузер не поддерживает видео.
  </video>
- <p>История иногда — это не выбор, а последствия</p> <!-- Белый текст с черной обводкой -->
+ <p>История иногда — это не выбор, а последствия</p>
  <div class="help-number">Психологическая помощь: 8-800-2000-122</div>
 </div>
 

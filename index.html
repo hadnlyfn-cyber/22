@@ -88,6 +88,7 @@ body {margin:0; font-family:Arial; background:black; overflow:hidden;}
  background:black;
  opacity:0; transition:1.5s;
  z-index:10;
+ text-align:center;
 }
 #finalScreen.active{opacity:1;}
 
@@ -106,8 +107,13 @@ body {margin:0; font-family:Arial; background:black; overflow:hidden;}
  padding: 20px;
  border: 3px solid black; /* Черная обводка */
  font-size: 36px;
- text-align: center;
  z-index: 15;
+}
+
+#finalScreen .help-number {
+ font-size: 20px;
+ color:white;
+ margin-top: 20px;
 }
 
 #intro .start-container {
@@ -147,6 +153,27 @@ body {margin:0; font-family:Arial; background:black; overflow:hidden;}
  box-shadow: 0 0 30px gray;
  transform: scale(1.1);
 }
+
+/* Блок с подсказкой */
+.start-message {
+ padding: 20px;
+ border: 3px solid red;
+ color: white;
+ font-size: 20px;
+ text-align: center;
+ margin-top: 20px;
+ font-weight: bold;
+ background-color: rgba(255, 0, 0, 0.2); /* Полупрозрачный красный фон */
+ box-shadow: 0 0 15px red; /* Неоновое свечение */
+ transition: 0.3s;
+ border-radius: 10px;
+}
+
+/* Эффект неона */
+.start-message:hover {
+ box-shadow: 0 0 30px red, 0 0 50px red;
+ transform: scale(1.05);
+}
 </style>
 </head>
 
@@ -158,7 +185,7 @@ body {margin:0; font-family:Arial; background:black; overflow:hidden;}
 <div id="intro" class="screen active">
   <div class="start-container">
     <button class="start-btn" onclick="startSite()">Беременная учительница</button>
-    <p>Нажми на кнопку для начала</p> <!-- Текст рядом с кнопкой -->
+    <p class="start-message">Нажми на кнопку выше, чтобы начать</p> <!-- Текст с красным блоком и неоновым эффектом -->
   </div>
 </div>
 
@@ -234,7 +261,8 @@ body {margin:0; font-family:Arial; background:black; overflow:hidden;}
    <source src="vid.mp4" type="video/mp4">
    Ваш браузер не поддерживает видео.
  </video>
- <p>Иногда история — это не выбор, а последствия</p> <!-- Белый текст с черной обводкой -->
+ <p>История иногда — это не выбор, а последствия</p> <!-- Белый текст с черной обводкой -->
+ <div class="help-number">Психологическая помощь: 8-800-2000-122</div>
 </div>
 
 <script>
@@ -265,31 +293,29 @@ function openModal(id){
 // Функция для закрытия модалки
 function closeModal(id){
  const el = document.getElementById(id);
- if (el) {
-   el.classList.remove('active');  // Закрываем модалку
- }
+ if (el) el.classList.remove('active');
 }
 
-// Функция для перехода к следующему слайду
+// Функция для перехода к вопросу
 function goQuestion(){
  menu.classList.remove('active');
  question.classList.add('active');
 }
 
-// Функция для отображения видео
+// Функция для вывода видео и финала
 function showVideo(){
  question.classList.remove('active');
  videoScreen.classList.add('active');
 
- setTimeout(() => {
+ setTimeout(()=>{
    finalScreen.classList.add('active');
- }, 5000);
+ },5000);
 }
 
-// Функция для отображения помощи
+// Показать помощь
 function showHelp(){
- const help = document.getElementById('help');
- if (help) help.classList.add('active');
+ finalScreen.classList.add('active');
+ question.classList.remove('active');
 }
 </script>
 

@@ -187,11 +187,11 @@ body {
   object-fit: cover;
   z-index: 5;
   opacity: 0.6;
-  pointer-events: none; /* Видео теперь не будет мешать взаимодействию */
-  background: none !important; /* Отключаем фон на видео */
+  pointer-events: none;
+  background: none !important;
 }
 
-/* Параметры для мобильных устройств */
+/* Стиль для первого слайда */
 #intro .start-container {
   display: flex;
   flex-direction: column;
@@ -210,8 +210,13 @@ body {
   font-size: 18px;
   text-align: center;
   margin-top: 20px;
+  background-color: rgba(255, 0, 0, 0.4); /* Красный фон для текста */
+  padding: 10px;
+  border-radius: 10px;
+  font-weight: bold;
 }
 
+/* Кнопки */
 .start-btn {
   font-size: 30px;
   padding: 40px 60px;
@@ -239,6 +244,7 @@ body {
   #intro .start-container p {
     font-size: 16px;
     text-align: center;
+    background-color: rgba(255, 0, 0, 0.5); /* Увеличиваем контраст для текста */
   }
 
   .modal {
@@ -364,20 +370,6 @@ body {
 </div>
 
 <script>
-// Если страница была обновлена, сбрасываем состояние и показываем первый титул
-window.onload = function() {
-  if (!sessionStorage.getItem("pageVisited")) {
-    sessionStorage.setItem("pageVisited", "true");
-  } else {
-    intro.style.display = 'none'; 
-    menu.classList.add('active');
-  }
-};
-
-const intro = document.getElementById('intro');
-const menu = document.getElementById('menu');
-const finalScreen = document.getElementById('finalScreen');
-
 // Функция для начала сайта
 function startSite(){
  try {

@@ -299,33 +299,19 @@ body {
   }
 }
 
-/* Текст на втором титуле с черным фоном и неоновым эффектом */
+/* Текст на втором титуле с зелёным неоновым свечением */
 #menu h2 {
   text-align: center;
   max-width: 600px;
   color: white;
   font-size: 28px;
+  font-weight: bold;
   position: relative; /* Для наложения фона */
   z-index: 10; /* Позиционируем поверх видео */
   padding: 20px;
-  background-color: black;
-  border-radius: 25px;
-  box-shadow: 0 0 20px rgba(0, 255, 0, 0.8); /* Неоновое свечение */
+  text-shadow: 0 0 20px rgba(0, 255, 0, 0.8); /* Неоновое свечение */
 }
 
-/* Чёрный блок с размытиям и неоновым свечением */
-#menu h2::before {
-  content: "";
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  background: rgba(0, 0, 0, 0.7); /* Полупрозрачный чёрный фон */
-  z-index: -1; /* Позиционирование за текстом */
-  filter: blur(10px); /* Размытие фона */
-  box-shadow: 0 0 30px rgba(0, 255, 0, 1); /* Неоновое свечение */
-}
 </style>
 </head>
 

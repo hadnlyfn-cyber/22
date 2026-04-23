@@ -53,26 +53,71 @@ body {
   margin: 10px;
   font-weight: bold;
   z-index: 15;
-  transition: background 0.3s ease, transform 0.3s ease;
+  transition: background 0.3s ease, transform 0.3s ease, box-shadow 0.3s ease;
+  position: relative;
+  overflow: hidden;
+}
+
+.neon-btn:hover {
+  transform: scale(1.05);
+}
+
+.neon-btn:before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(255, 255, 255, 0.1);
+  transition: 0.3s;
+  border-radius: 25px;
+}
+
+.neon-btn:hover:before {
+  background: rgba(255, 255, 255, 0.2);
 }
 
 .btn-white {
   background: linear-gradient(45deg, #ffffff, #cccccc);
   color: black;
+  box-shadow: 0 0 10px white, 0 0 15px white, 0 0 30px white;
+}
+
+.btn-white:hover {
+  box-shadow: 0 0 20px white, 0 0 30px white, 0 0 50px white;
+}
+
+.btn-white:before {
+  background: rgba(255, 255, 255, 0.1);
 }
 
 .btn-green {
   background: linear-gradient(45deg, lightgreen, green);
   color: black;
+  box-shadow: 0 0 10px lightgreen, 0 0 15px green, 0 0 30px green;
+}
+
+.btn-green:hover {
+  box-shadow: 0 0 20px lightgreen, 0 0 30px green, 0 0 50px green;
+}
+
+.btn-green:before {
+  background: rgba(0, 255, 0, 0.1);
 }
 
 .btn-red {
   background: linear-gradient(45deg, #ff6b6b, #ff4d4d);
   color: white;
+  box-shadow: 0 0 10px red, 0 0 15px red, 0 0 30px red;
 }
 
-.neon-btn:hover {
-  transform: scale(1.05);
+.btn-red:hover {
+  box-shadow: 0 0 20px red, 0 0 30px red, 0 0 50px red;
+}
+
+.btn-red:before {
+  background: rgba(255, 0, 0, 0.1);
 }
 
 .row {
@@ -303,7 +348,7 @@ body {
 <!-- СЛАЙД 1 -->
 <div id="intro" class="screen active">
   <div class="start-container">
-    <button class="start-btn" onclick="startSite()">Беременная учительница</button>
+    <button class="start-btn neon-btn" onclick="startSite()">Беременная учительница</button>
     <p class="start-message">Нажми на кнопку выше, чтобы начать</p>
   </div>
 </div>
@@ -325,7 +370,7 @@ body {
 
  <button class="neon-btn btn-white" onclick="openModal('creator')">СОЗДАТЕЛЬ</button>
 
- <button class="neon-btn btn-white" onclick="goQuestion()">Ты серьезно?</button>
+ <button class="neon-btn btn-white" onclick="showOutro()">Ты серьезно?</button>
 </div>
 
 <!-- МОДАЛКИ -->
@@ -349,31 +394,6 @@ body {
  <p style="color:white;">Будущий отец, сам ученик и создатель сайта — Лукьянов Иван</p>
 </div>
 
-<!-- СЛАЙД 3 -->
-<div id="question" class="screen">
- <video class="video-background" autoplay loop muted>
-   <source src="noob.mp4" type="video/mp4">
-   Ваш браузер не поддерживает видео.
- </video>
- <h2 style="color:white;">У вас правда это случилось?</h2>
- <div class="row">
-   <button class="neon-btn btn-white" onclick="showVideo()">Нет</button>
-   <button class="neon-btn btn-red" onclick="showHelp()">Да</button>
- </div>
-</div>
-
-<!-- ВИДЕО -->
-<div id="videoScreen" class="screen">
- <video id="video" src="vid.mp4" controls autoplay></video>
-</div>
-
-<!-- ПОМОЩЬ -->
-<div id="help" class="modal modal-red">
- Психологическая помощь<br>8-800-2000-122
- <br><br>
- <button class="neon-btn btn-white" onclick="closeModal('help')">Закрыть</button>
-</div>
-
 <!-- ФИНАЛ -->
 <div id="finalScreen" class="screen">
  <video class="video-background" autoplay loop muted>
@@ -385,10 +405,18 @@ body {
 </div>
 
 <script>
+// Если страница была обновлена, сбрасываем состояние и показываем первый титул
+window.onload = function() {
+  if (!sessionStorage.getItem("pageVisited")) {
+    sessionStorage.setItem("pageVisited", "true");
+  } else {
+    intro.style.display = 'none'; 
+    menu.classList.add('active');
+  }
+};
+
 const intro = document.getElementById('intro');
 const menu = document.getElementById('menu');
-const question = document.getElementById('question');
-const videoScreen = document.getElementById('videoScreen');
 const finalScreen = document.getElementById('finalScreen');
 
 // Функция для начала сайта
@@ -415,26 +443,10 @@ function closeModal(id){
  if (el) el.classList.remove('active');
 }
 
-// Функция для перехода к вопросу
-function goQuestion(){
+// Функция для перехода сразу к аутро
+function showOutro() {
  menu.classList.remove('active');
- question.classList.add('active');
-}
-
-// Функция для вывода видео и финала
-function showVideo(){
- question.classList.remove('active');
- videoScreen.classList.add('active');
-
- setTimeout(()=>{
-   finalScreen.classList.add('active');
- },5000);
-}
-
-// Показать помощь
-function showHelp(){
  finalScreen.classList.add('active');
- question.classList.remove('active');
 }
 </script>
 

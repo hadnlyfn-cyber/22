@@ -2,9 +2,11 @@
 <html lang="ru">
 <head>
 <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Story 22</title>
 
 <style>
+/* Основной стиль */
 body {
   margin: 0;
   font-family: Arial, sans-serif;
@@ -12,6 +14,7 @@ body {
   overflow: hidden;
 }
 
+/* Стиль для экранов */
 .screen {
   position: absolute;
   width: 100%;
@@ -46,11 +49,11 @@ body {
 }
 
 .neon-btn {
-  padding: 15px 25px;
+  padding: 18px 30px;
   border-radius: 25px;
   border: none;
   cursor: pointer;
-  margin: 10px;
+  margin: 15px;
   font-weight: bold;
   z-index: 15;
   transition: background 0.3s ease, transform 0.3s ease, box-shadow 0.3s ease;
@@ -88,10 +91,6 @@ body {
   box-shadow: 0 0 20px white, 0 0 30px white, 0 0 50px white;
 }
 
-.btn-white:before {
-  background: rgba(255, 255, 255, 0.1);
-}
-
 .btn-green {
   background: linear-gradient(45deg, lightgreen, green);
   color: black;
@@ -102,10 +101,6 @@ body {
   box-shadow: 0 0 20px lightgreen, 0 0 30px green, 0 0 50px green;
 }
 
-.btn-green:before {
-  background: rgba(0, 255, 0, 0.1);
-}
-
 .btn-red {
   background: linear-gradient(45deg, #ff6b6b, #ff4d4d);
   color: white;
@@ -114,10 +109,6 @@ body {
 
 .btn-red:hover {
   box-shadow: 0 0 20px red, 0 0 30px red, 0 0 50px red;
-}
-
-.btn-red:before {
-  background: rgba(255, 0, 0, 0.1);
 }
 
 .row {
@@ -196,6 +187,7 @@ body {
   object-fit: cover;
   z-index: 5;
   opacity: 0.6;
+  pointer-events: none; /* Видео теперь не будет мешать взаимодействию */
 }
 
 #finalScreen p {

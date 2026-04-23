@@ -16,7 +16,7 @@ body {margin:0; font-family:Arial; background:black; overflow:hidden;}
 }
 .screen.active{opacity:1; pointer-events:all;}
 
-#intro{background:url("22.jpg") center/cover no-repeat;}
+#intro{background:url("22.jpg") center/cover no-repeat; z-index:10; position:relative;}
 #menu{background:black; color:white;}
 
 .neon-btn{
@@ -26,19 +26,15 @@ body {margin:0; font-family:Arial; background:black; overflow:hidden;}
  cursor:pointer;
  margin:10px;
  font-weight:bold;
- transition:0.3s;
+ z-index:15; /* кнопки находятся на переднем плане */
 }
 
-/* BUTTON COLORS */
-.btn-white{background:white; color:black; box-shadow:0 0 10px gray;}
-.btn-white:hover{box-shadow:0 0 25px gray; transform:scale(1.05);} 
-
-.btn-green{background:lightgreen; color:black; box-shadow:0 0 20px green;}
-.btn-red{background:#ff4d4d; color:white; box-shadow:0 0 20px red;}
+.btn-white{background:white; color:black;}
+.btn-green{background:lightgreen; color:black;}
+.btn-red{background:#ff4d4d; color:white;}
 
 .row{display:flex; gap:20px;}
 
-/* MODALS */
 .modal{
  position:absolute;
  top:50%; left:50%;
@@ -50,6 +46,7 @@ body {margin:0; font-family:Arial; background:black; overflow:hidden;}
  transition:0.4s;
  width:400px;
  text-align:center;
+ z-index:20; /* увеличиваем z-index для модальных окон */
 }
 .modal.active{
  opacity:1;
@@ -165,41 +162,49 @@ const question = document.getElementById('question');
 const videoScreen = document.getElementById('videoScreen');
 const finalScreen = document.getElementById('finalScreen');
 
+// Функция для начала сайта
 function startSite(){
  try {
    const music = document.getElementById('music');
-   if (music) { music.play().catch(()=>{}); }
- } catch(e) {}
+   if (music) { music.play().catch(() => {}); }
+ } catch(e){}
 
- // ЧИСТЫЙ ПЕРЕХОД БЕЗ СИНТАКСИЧЕСКИХ ОШИБОК
- intro.classList.remove('active');
+ // Убираем intro и показываем меню
+ intro.style.display = 'none'; 
  menu.classList.add('active');
 }
 
+// Функция для открытия модалки
 function openModal(id){
  const el = document.getElementById(id);
  if (el) el.classList.add('active');
 }
 
+// Функция для закрытия модалки
 function closeModal(id){
  const el = document.getElementById(id);
- if (el) el.classList.remove('active');
+ if (el) {
+   el.classList.remove('active');  // Закрываем модалку
+ }
 }
 
+// Функция для перехода к следующему слайду
 function goQuestion(){
  menu.classList.remove('active');
  question.classList.add('active');
 }
 
+// Функция для отображения видео
 function showVideo(){
  question.classList.remove('active');
  videoScreen.classList.add('active');
 
- setTimeout(()=>{
+ setTimeout(() => {
    finalScreen.classList.add('active');
  }, 5000);
 }
 
+// Функция для отображения помощи
 function showHelp(){
  const help = document.getElementById('help');
  if (help) help.classList.add('active');

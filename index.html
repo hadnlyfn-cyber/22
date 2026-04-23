@@ -299,12 +299,16 @@ body {
   }
 }
 
-/* Текст на втором титуле с черной обводкой */
+/* Текст на втором титуле с черным фоном и неоновым эффектом */
 #menu h2 {
   text-align: center;
   max-width: 600px;
   color: white;
-  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.8), -2px -2px 4px rgba(0, 0, 0, 0.8); /* Черная обводка */
+  background-color: black;
+  padding: 20px;
+  border-radius: 25px;
+  box-shadow: 0 0 20px rgba(0, 255, 0, 0.8); /* Неоновый зелёный эффект */
+  font-size: 28px;
 }
 </style>
 </head>
@@ -329,9 +333,7 @@ body {
    <source src="noob.mp4" type="video/mp4">
    Ваш браузер не поддерживает видео.
  </video>
- <h2 style="text-align:center; max-width:600px; color:white;">
- +/- Быть беременной учительницей школы 22 от ученика 11 а класса
- </h2>
+ <h2> +/- Быть беременной учительницей школы 22 от ученика 11 а класса </h2>
 
  <div class="row">
    <button class="neon-btn btn-green" onclick="openModal('plus')">ПЛЮСЫ</button>

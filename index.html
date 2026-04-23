@@ -110,6 +110,43 @@ body {margin:0; font-family:Arial; background:black; overflow:hidden;}
  z-index: 15;
 }
 
+#intro .start-container {
+ display: flex;
+ flex-direction: column;
+ align-items: center;
+ justify-content: center;
+}
+
+#intro .start-container button {
+ font-size: 25px;
+ padding: 30px 50px;
+ margin: 20px;
+}
+
+#intro .start-container p {
+ color:white;
+ font-size: 18px;
+ text-align:center;
+ margin-top: 20px;
+}
+
+/* Кнопка на первом титуле */
+.start-btn {
+ font-size: 30px;
+ padding: 40px 60px;
+ background-color: #fff;
+ color: black;
+ border-radius: 25px;
+ border: none;
+ cursor: pointer;
+ box-shadow: 0 0 20px gray;
+ transition: 0.3s;
+}
+
+.start-btn:hover {
+ box-shadow: 0 0 30px gray;
+ transform: scale(1.1);
+}
 </style>
 </head>
 
@@ -119,7 +156,10 @@ body {margin:0; font-family:Arial; background:black; overflow:hidden;}
 
 <!-- СЛАЙД 1 -->
 <div id="intro" class="screen active">
- <button class="neon-btn btn-white" onclick="startSite()">Беременная учительница</button>
+  <div class="start-container">
+    <button class="start-btn" onclick="startSite()">Беременная учительница</button>
+    <p>Нажми на кнопку для начала</p> <!-- Текст рядом с кнопкой -->
+  </div>
 </div>
 
 <!-- СЛАЙД 2 -->
@@ -152,7 +192,7 @@ body {margin:0; font-family:Arial; background:black; overflow:hidden;}
 
 <div id="minus" class="modal modal-red">
  <b style="color:red;">Минусы</b><br><br>
- Риски, последствия
+ Это нарушение закона! В России половая связь с несовершеннолетними является уголовным преступлением. Такое поведение может привести к уголовной ответственности, лишению свободы, и общественному осуждению. Жертва может быть изолирована, а общество осуждает такие поступки.
  <br><br>
  <button class="neon-btn btn-white" onclick="closeModal('minus')">Закрыть</button>
 </div>

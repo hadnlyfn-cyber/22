@@ -63,14 +63,38 @@ body {
   align-items: center;
   justify-content: center;
   text-align: center;
+}
+
+.neon-btn:hover {
+  transform: scale(1.05);
+}
+
+/* Начальная кнопка с красным градиентом */
+.neon-btn.start-btn {
   background: linear-gradient(45deg, #ff4d4d, #ff6b6b); /* Красный градиент */
   color: white;
   box-shadow: 0 0 20px red;
 }
 
-.neon-btn:hover {
-  transform: scale(1.05);
-  box-shadow: 0 0 30px red, 0 0 50px red;
+/* Кнопка "ПЛЮСЫ" с зеленым градиентом */
+.neon-btn.btn-green {
+  background: linear-gradient(45deg, lightgreen, green);
+  color: black;
+  box-shadow: 0 0 20px green;
+}
+
+/* Кнопка "МИНУСЫ" с красным градиентом */
+.neon-btn.btn-red {
+  background: linear-gradient(45deg, #ff6b6b, #ff4d4d);
+  color: white;
+  box-shadow: 0 0 20px red;
+}
+
+/* Кнопка "СОЗДАТЕЛЬ" и "Ты серьезно?" с белым градиентом */
+.neon-btn.btn-white {
+  background: linear-gradient(45deg, #ffffff, #cccccc);
+  color: black;
+  box-shadow: 0 0 20px white;
 }
 
 .neon-btn p {
@@ -284,7 +308,7 @@ body {
 <!-- СЛАЙД 1 -->
 <div id="intro" class="screen active">
   <div class="start-container">
-    <button class="neon-btn" onclick="startSite()">
+    <button class="neon-btn start-btn" onclick="startSite()">
       Беременная учительница
       <p>Нажми на меня</p> <!-- Текст "Нажми на меня" теперь снизу кнопки -->
     </button>

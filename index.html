@@ -26,7 +26,7 @@ body {margin:0; font-family:Arial; background:black; overflow:hidden;}
  height: 100vh; /* высота экрана */
 }
 
-#menu{background:black; color:white;}
+#menu, #question{background:black; color:white;}
 
 .neon-btn{
  padding:15px 25px;
@@ -90,6 +90,17 @@ body {margin:0; font-family:Arial; background:black; overflow:hidden;}
 }
 #finalScreen.active{opacity:1;}
 
+.video-background {
+ position: absolute;
+ top: 0;
+ left: 0;
+ width: 100%;
+ height: 100%;
+ object-fit: cover;
+ z-index: 5; /* Под остальными элементами */
+ opacity: 0.6; /* Слегка затемним видео */
+}
+
 </style>
 </head>
 
@@ -104,6 +115,10 @@ body {margin:0; font-family:Arial; background:black; overflow:hidden;}
 
 <!-- СЛАЙД 2 -->
 <div id="menu" class="screen">
+ <video class="video-background" autoplay loop muted>
+   <source src="noob.mp4" type="video/mp4">
+   Ваш браузер не поддерживает видео.
+ </video>
  <h2 style="text-align:center; max-width:600px; color:white;">
  +/- Быть беременной учительницей школы 22 от ученика 11 а класса
  </h2>
@@ -141,6 +156,10 @@ body {margin:0; font-family:Arial; background:black; overflow:hidden;}
 
 <!-- СЛАЙД 3 -->
 <div id="question" class="screen">
+ <video class="video-background" autoplay loop muted>
+   <source src="noob.mp4" type="video/mp4">
+   Ваш браузер не поддерживает видео.
+ </video>
  <h2 style="color:white;">У вас правда это случилось?</h2> <!-- Белый текст -->
  <div class="row">
    <button class="neon-btn btn-white" onclick="showVideo()">Нет</button>

@@ -87,6 +87,7 @@ body {margin:0; font-family:Arial; background:black; overflow:hidden;}
  color:white; font-size:24px;
  background:black;
  opacity:0; transition:1.5s;
+ z-index:10;
 }
 #finalScreen.active{opacity:1;}
 
@@ -99,6 +100,14 @@ body {margin:0; font-family:Arial; background:black; overflow:hidden;}
  object-fit: cover;
  z-index: 5; /* Под остальными элементами */
  opacity: 0.6; /* Слегка затемним видео */
+}
+
+#finalScreen p {
+ padding: 20px;
+ border: 3px solid black; /* Черная обводка */
+ font-size: 36px;
+ text-align: center;
+ z-index: 15;
 }
 
 </style>
@@ -180,8 +189,12 @@ body {margin:0; font-family:Arial; background:black; overflow:hidden;}
 </div>
 
 <!-- ФИНАЛ -->
-<div id="finalScreen">
- Иногда история — это не выбор, а последствия
+<div id="finalScreen" class="screen">
+ <video class="video-background" autoplay loop muted>
+   <source src="vid.mp4" type="video/mp4">
+   Ваш браузер не поддерживает видео.
+ </video>
+ <p>Иногда история — это не выбор, а последствия</p> <!-- Белый текст с черной обводкой -->
 </div>
 
 <script>

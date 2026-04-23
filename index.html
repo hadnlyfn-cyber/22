@@ -191,19 +191,7 @@ body {
   background: none !important; /* Отключаем фон на видео */
 }
 
-#finalScreen p {
-  padding: 20px;
-  border: 3px solid black;
-  font-size: 36px;
-  z-index: 15;
-}
-
-#finalScreen .help-number {
-  font-size: 20px;
-  color: white;
-  margin-top: 20px;
-}
-
+/* Параметры для мобильных устройств */
 #intro .start-container {
   display: flex;
   flex-direction: column;
@@ -224,7 +212,6 @@ body {
   margin-top: 20px;
 }
 
-/* Кнопка на первом титуле */
 .start-btn {
   font-size: 30px;
   padding: 40px 60px;
@@ -240,27 +227,6 @@ body {
 .start-btn:hover {
   box-shadow: 0 0 30px gray;
   transform: scale(1.1);
-}
-
-/* Блок с подсказкой */
-.start-message {
-  padding: 20px;
-  border: 3px solid red;
-  color: white;
-  font-size: 20px;
-  text-align: center;
-  margin-top: 20px;
-  font-weight: bold;
-  background-color: rgba(255, 0, 0, 0.2);
-  box-shadow: 0 0 15px red;
-  transition: 0.3s;
-  border-radius: 10px;
-}
-
-/* Эффект неона */
-.start-message:hover {
-  box-shadow: 0 0 30px red, 0 0 50px red;
-  transform: scale(1.05);
 }
 
 /* Медиа-запросы для мобильных устройств */
@@ -348,7 +314,7 @@ body {
 
 <!-- СЛАЙД 2 -->
 <div id="menu" class="screen">
- <video class="video-background" autoplay loop muted>
+ <video class="video-background" autoplay loop muted playsinline>
    <source src="noob.mp4" type="video/mp4">
    Ваш браузер не поддерживает видео.
  </video>
@@ -389,7 +355,7 @@ body {
 
 <!-- ФИНАЛ -->
 <div id="finalScreen" class="screen">
- <video class="video-background" autoplay loop muted>
+ <video class="video-background" autoplay loop muted playsinline>
    <source src="vid.mp4" type="video/mp4">
    Ваш браузер не поддерживает видео.
  </video>

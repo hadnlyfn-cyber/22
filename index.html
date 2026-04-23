@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="UTF-8">
+<title>Story 22</title>
+
+<style>
+body { margin:0; font-family:Arial; background:black; overflow:hidden; }
+
+.screen {
+  position:absolute; width:100%; height:100%;
+  display:flex; flex-direction:column;
+  justify-content:center; align-items:center;
+  opacity:0; pointer-events:none;
+  transition:0.8s;
+}
+.screen.active { opacity:1; pointer-events:all; }
+
+#intro { background:url("22.jpg") center/cover no-repeat; }
+#menu { background:black; color:white; }
+
+.neon-btn {
+  padding:15px 25px; border-radius:25px;
+  border:none; cursor:pointer;
+  background:white; color:black;
+  margin:10px;
+}
+
+.row { display:flex; gap:20px; }
+
+.modal {
+  position:absolute; top:50%; left:50%;
+  transform:translate(-50%,-50%) scale(0.8);
+  background:#222; color:white;
+  padding:20px; border-radius:15px;
+  opacity:0; transition:0.5s;
+}
+.modal.active { opacity:1; transform:translate(-50%,-50%) scale(1); }
+
+#finalScreen {
+  position:absolute; width:100%; height:100%;
+  display:flex; justify-content:center; align-items:center;
+  color:white; font-size:24px;
+  background:black;
+  opacity:0; transition:1.5s;
+}
+#finalScreen.active { opacity:1; }
+
+.shake { animation:shake 1s infinite; }
+@keyframes shake {
+  0%{transform:translate(0,0);}25%{transform:translate(2px,-2px);}50%{transform:translate(-2px,2px);}75%{transform:translate(2px,2px);}100%{transform:translate(0,0);} }
+
+</style>
+</head>
+
+<body>
+
+<audio id="music" src="mus.mp3" loop></audio>
+
+<!-- 1 -->
+<div id="intro" class="screen active">
+  <button class="neon-btn" onclick="startSite()">Старт</button>
+</div>
+
+<!-- 2 -->
+<div id="menu" class="screen">
+  <h2>+/- Быть беременной учительницей школы 22 от ученика 11 а класса</h2>
+
+  <div class="row">
+    <button class="neon-btn" onclick="openModal('plus')">ПЛЮСЫ</button>
+    <button class="neon-btn" onclick="openModal('minus')">МИНУСЫ</button>
+  </div>
+
+  <button class="neon-btn" onclick="openModal('creator')">СОЗДАТЕЛЬ</button>
+
+  <button class="neon-btn shake" onclick="goQuestion()">Ты серьезно?</button>
+</div>
+
+<!-- MODALS -->
+<div id="plus" class="modal">Плюсы<button onclick="closeModal('plus')">Закрыть</button></div>
+<div id="minus" class="modal">Минусы<button onclick="closeModal('minus')">Закрыть</button></div>
+<div id="creator" class="modal"><img src="ivan.jpg" width="200"><br><button onclick="closeModal('creator')">Закрыть</button></div>
+
+<!-- 3 -->
+<div id="question" class="screen">
+  <h2>У вас правда это случилось?</h2>
+  <div class="row">
+    <button class="neon-btn" onclick="showVideo()">Нет</button>
+    <button class="neon-btn" onclick="showHelp()">Да</button>
+  </div>
+</div>
+
+<!-- VIDEO -->
+<div id="videoScreen" class="screen">
+  <video id="video" src="vid.mp4" controls autoplay></video>
+</div>
+
+<!-- HELP -->
+<div id="help" class="modal">
+  Психологическая помощь<br>8-800-2000-122
+  <button onclick="closeModal('help')">Закрыть</button>
+</div>
+
+<!-- FINAL -->
+<div id="finalScreen">Иногда история — это не выбор, а последствия</div>
+
+<script>
+const intro = document.getElementById('intro');
+const menu = document.getElementById('menu');
+const question = document.getElementById('question');
+const videoScreen = document.getElementById('videoScreen');
+const finalScreen = document.getElementById('finalScreen');
+
+function startSite(){
+  document.getElementById('music').play();
+  intro.classList.remove('active');
+  menu.classList.add('active');
+}
+
+function openModal(id){
+  document.getElementById(id).classList.add('active');
+}
+
+function closeModal(id){
+  document.getElementById(id).classList.remove('active');
+}
+
+function goQuestion(){
+  menu.classList.remove('active');
+  question.classList.add('active');
+}
+
+function showVideo(){
+  question.classList.remove('active');
+  videoScreen.classList.add('active');
+
+  setTimeout(()=>{
+    finalScreen.classList.add('active');
+  },5000);
+}
+
+function showHelp(){
+  document.getElementById('help').classList.add('active');
+}
+
+</script>
+
+</body>
+</html>

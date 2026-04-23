@@ -16,7 +16,16 @@ body {margin:0; font-family:Arial; background:black; overflow:hidden;}
 }
 .screen.active{opacity:1; pointer-events:all;}
 
-#intro{background:url("22.jpg") center/cover no-repeat; z-index:10; position:relative;}
+#intro{
+ background:url("22.jpg") center/cover no-repeat; 
+ z-index:10; 
+ position:relative;
+ display: flex;
+ justify-content: center;
+ align-items: center;
+ height: 100vh; /* Занимает весь экран */
+}
+
 #menu{background:black; color:white;}
 
 .neon-btn{
@@ -95,7 +104,7 @@ body {margin:0; font-family:Arial; background:black; overflow:hidden;}
 
 <!-- СЛАЙД 2 -->
 <div id="menu" class="screen">
- <h2 style="text-align:center; max-width:600px;">
+ <h2 style="text-align:center; max-width:600px; color:white;">
  +/- Быть беременной учительницей школы 22 от ученика 11 а класса
  </h2>
 
@@ -111,14 +120,14 @@ body {margin:0; font-family:Arial; background:black; overflow:hidden;}
 
 <!-- МОДАЛКИ -->
 <div id="plus" class="modal modal-green">
- <b>Плюсы</b><br><br>
+ <b style="color:red;">Плюсы</b><br><br>
  Возможные чувства
  <br><br>
  <button class="neon-btn btn-white" onclick="closeModal('plus')">Закрыть</button>
 </div>
 
 <div id="minus" class="modal modal-red">
- <b>Минусы</b><br><br>
+ <b style="color:red;">Минусы</b><br><br>
  Риски, последствия
  <br><br>
  <button class="neon-btn btn-white" onclick="closeModal('minus')">Закрыть</button>
@@ -127,11 +136,12 @@ body {margin:0; font-family:Arial; background:black; overflow:hidden;}
 <div id="creator" class="modal modal-gray">
  <img src="ivan.jpg" width="200"><br><br>
  <button class="neon-btn btn-white" onclick="closeModal('creator')">Закрыть</button>
+ <p style="color:white;">Будущий отец, сам ученик и создатель сайта — Лукьянов Иван</p> <!-- Добавлена подпись -->
 </div>
 
 <!-- СЛАЙД 3 -->
 <div id="question" class="screen">
- <h2>У вас правда это случилось?</h2>
+ <h2 style="color:white;">У вас правда это случилось?</h2> <!-- Белый текст -->
  <div class="row">
    <button class="neon-btn btn-white" onclick="showVideo()">Нет</button>
    <button class="neon-btn btn-red" onclick="showHelp()">Да</button>
